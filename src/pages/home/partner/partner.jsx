@@ -8,7 +8,7 @@ import { useRef, useState } from "react";
 const Partner = () => {
   const swiperRef = useRef(null);
   const [slidesConfig, setSlidesConfig] = useState({
-    slidesPerView: 4.3,
+    slidesPerView: 4,
     spaceBetween: 0,
     
     
@@ -58,16 +58,6 @@ const Partner = () => {
                 className="slide-content"
               >
                 <Slide.Item>
-                  <div className="slide-item  bg-[#0A86E8]!">
-                    <img
-                      className="slide-image max-w-[80%]!"
-                      src="/slide/slide1.png"
-                      alt=""
-                    />
-                  </div>
-                </Slide.Item>
-
-                <Slide.Item>
                   <div className="slide-item">
                     <img
                       className="slide-image max-w-[65%]!"
@@ -76,7 +66,6 @@ const Partner = () => {
                     />
                   </div>
                 </Slide.Item>
-
                 <Slide.Item>
                   <div className="slide-item bg-[#083025]!">
                     <img
@@ -86,7 +75,6 @@ const Partner = () => {
                     />
                   </div>
                 </Slide.Item>
-
                 <Slide.Item>
                   <div className="slide-item">
                     <img
@@ -95,8 +83,7 @@ const Partner = () => {
                       alt=""
                     />
                   </div>
-                </Slide.Item>
-                
+                </Slide.Item>    
                 <Slide.Item>
                   <div className="slide-item">
                     <img
@@ -106,7 +93,6 @@ const Partner = () => {
                     />
                   </div>
                 </Slide.Item>
-
                 <Slide.Item>
                   <div className="slide-item ">
                     <img
@@ -116,7 +102,6 @@ const Partner = () => {
                     />
                   </div>
                 </Slide.Item>
-
                 <Slide.Item>
                   <div className="slide-item">
                     <img
@@ -126,7 +111,6 @@ const Partner = () => {
                     />
                   </div>
                 </Slide.Item>
-
                 <Slide.Item>
                   <div className="slide-item bg-gray-800 border-[2px] border-white h-full w-full">
                     <span 

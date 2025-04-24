@@ -10,7 +10,7 @@ function Banner() {
         <div className='banner flex flex-col relative -mb-[1px] mx-[auto]
         max-sm:py-[2.8rem]  max-sm:px-[0] max-sm:gap-[2rem]' 
          >
-            <div className=" mx-[auto] res-img">
+            <div className=" mx-[auto] res-img my-[0_2rem] max-sm:my-[1rem]! ">
                 <img src={BannerLogo} alt="" className=' max-w-[100%]' loading='lazy'/>
             </div>
             <div className=" flex w-full justify-center

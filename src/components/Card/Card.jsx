@@ -17,10 +17,14 @@ const Card = forwardRef(
         >
           {title && <p className="title-card">{title}</p>}
           <p>
-            <img decoding="async" src={img} className="rounded-[1.6rem] max-w-[80%] "/>
+            <img decoding="async" src={img} className="rounded-[1.6rem] max-w-[90%] "/>
           </p>
           {description && (
-            <p className="text-description p-market-res">{description}</p>
+            <div className="text-description p-market-res">
+              {Array.isArray(description)
+                ? description.map((line, i) => <p key={i}>{line}</p>)
+                : description}
+            </div>
           )}
         </div>
       </a>

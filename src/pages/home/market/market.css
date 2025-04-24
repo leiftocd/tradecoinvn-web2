@@ -1,19 +1,13 @@
 .col-left {
-        max-width: 66%;
-        flex-basis: 66%;
+        max-width: 100%;
+        flex-basis: 100%;
         padding: 0 15px 30px;
+        display: flex;
   }
-  .col-right {
-        max-width: 33%;
-        flex-basis: 33%;
-        padding: 0 15px 30px;
-  }
-  .col-left p,
-  .col-right p
+  .col-left p
   {
     font-size: 1.6rem;
     color: #fff;
-    margin-bottom: 1.3em;
   }
   .market-slide {
         display: none;
@@ -41,8 +35,7 @@
     #market .swiper-slide > div{
         padding: .8rem;
     }
-    .col-left,
-    .col-right {
+    .col-left {
         display: none;
     }
     .market-slide {

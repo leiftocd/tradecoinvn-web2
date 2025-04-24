@@ -4,11 +4,8 @@
 .arrowM{
     display: none;
 }
-#beneBox:hover #bene2 img {
-    contain: size;
-    contain-intrinsic-size: 550px 400px; 
-}
 #beneBox:hover #bene1,
+#beneBox:hover #bene2,
 #beneBox:hover #bene3,
 #beneBox:hover #bene4,
 #beneBox:hover #bene5,
@@ -17,6 +14,7 @@
         transform: scale(1.05);
     }
 #beneBox:hover #bene1 img,
+#beneBox:hover #bene2 img,
 #beneBox:hover #bene3 img,
 #beneBox:hover #bene4 img,
 #beneBox:hover #bene5 img,
@@ -25,7 +23,7 @@
         object-fit: contain;
         height: 100%;
         width: 100%;
-        border-radius: 1rem;
+        border-radius: 6%;
     }
 #beneBox:hover h2{
     margin: 0;

@@ -6,9 +6,10 @@
     max-width: 26.4rem;
     border-radius: 1.6rem;
     flex-direction: column;
-    padding: 2rem;
-    margin-bottom: 2.6rem;
+    padding: 3rem 3.5rem;
     background: linear-gradient(180deg, #00e9ec99 0%, #00000099 100%);
+    gap: 2rem;
+
   }
   .card .title-card {
     font-size: 2rem;
@@ -34,6 +35,7 @@
       width: 100%;
       margin-bottom: 2.6rem;
       transition: all 0.3s ease-in-out;
+      padding: 2rem 1rem !important;
     }
     .card:hover {
       box-shadow: rgba(0, 233, 236, 0.475) 0px 0px 12px 0px;
@@ -41,15 +43,19 @@
       border: #00e9ec 1px solid;
     }
     .card img{
-      max-width: 80%;
+      max-width: 90%;
     }
     .card .title-card {
       font-size: 1.6rem;
     }
     .card.active {
-      transform: scale(1.05);
-      transition: all .3s ease-in-out;
       background: linear-gradient(180deg, #00e9ec99 0%, #00000099 100%);
+    }
+    .card .title-card {
+      font-size: 1.4rem !important;
+    }
+    .p-market-res{
+      font-size: 1.2rem !important;
     }
   }
   @media (max-width: 480px) {
@@ -58,10 +64,13 @@
       margin-bottom: 0;
     }
     .card .title-card {
-      font-size: 1.4rem;
+      font-size: 1.4rem !important;
     }
     .card img{
       max-width: 90%;
+    }
+    .p-market-res{
+      font-size: 1.2rem !important;
     }
   }
   
