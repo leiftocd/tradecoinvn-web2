@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Card } from "../../../components/Card/Card";
 import { Slide } from "../../../components/Slide/Slide";
 import "swiper/css/free-mode";
-import { FreeMode, Autoplay } from "swiper/modules";
+import {  Autoplay } from "swiper/modules";
 import "./market.css";
 
 function Market() {
@@ -188,21 +188,24 @@ function Market() {
                 src="/smoker.png"
               />
               <Slide.Root
-                slidesPerView={3}
+                slidesPerView={3} 
+                slidesPerGroup={1} 
                 spaceBetween={10}
-                touchRatio={.8} // Tăng độ nhạy vuốt
-                modules={[FreeMode, Autoplay]}
+                touchRatio={0.8}
+                speed={600} 
+                modules={[Autoplay]} 
                 loop={true}
+                loopAdditionalSlides={1} 
                 autoplay={{
                   delay: 2500,
-                  disableOnInteraction: true, // Tạm dừng autoplay khi vuốt
+                  disableOnInteraction: true,
                 }}
                 onSwiper={(swiper) => {
-                  slideRef.current = swiper; // Lưu tham chiếu đến swiper instance
+                  slideRef.current = swiper;
                 }}
-                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)} // Sử dụng realIndex cho loop
-                onTouchStart={stopAutoplay} // Dừng autoplay khi bắt đầu vuốt
-                onTouchEnd={handleTouchEnd} // Khởi động lại sau khi vuốt
+                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                onTouchStart={stopAutoplay}
+                onTouchEnd={handleTouchEnd}
                 className="slide-content"
                 breakpoints={{
                   0: { slidesPerView: 2.5, spaceBetween: 5 },
