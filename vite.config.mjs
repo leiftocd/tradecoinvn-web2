@@ -8,11 +8,19 @@ export default defineConfig(({ mode }) => {
   let baseUrl;
   if (mode === 'development') {
     baseUrl = 'http://localhost:5173';
-  } else if (process.env.VERCEL_URL) {
-    baseUrl = `https://${process.env.VERCEL_URL}`;
+  } else if (process.env.VITE_BASE_URL) {
+    baseUrl = process.env.VITE_BASE_URL;
   } else {
-    baseUrl = config.Domain;
+    baseUrl = config.Domain || process.env.URL || '';
   }
+
+  const gaMeasurementId = process.env.GA_MEASUREMENT_ID || '';
+
+  console.log('Vite environment:', process.env);
+  console.log('Vite inject data:', {
+    BASE_URL: baseUrl,
+    GA_MEASUREMENT_ID: gaMeasurementId,
+  });
 
   return {
     plugins: [
@@ -20,17 +28,26 @@ export default defineConfig(({ mode }) => {
       tailwindcss(),
       createHtmlPlugin({
         minify: true,
+        template: 'index.html',
         inject: {
           data: {
             BASE_URL: baseUrl,
+            GA_MEASUREMENT_ID: gaMeasurementId,
           },
+          ejsOptions: {
+            delimiter: '%'
+          }
         },
       }),
     ],
     build: {
       rollupOptions: {
-        input: 'index.html', // chỉ cần trang chính cho React app
+        input: 'index.html',
       },
+    },
+    define: {
+      'import.meta.env.VITE_GA_MEASUREMENT_ID': JSON.stringify(gaMeasurementId),
+      'import.meta.env.VITE_BASE_URL': JSON.stringify(baseUrl),
     },
   };
 });

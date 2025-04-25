@@ -1,27 +1,54 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/x-icon" href="/logotitle.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Chủ - TRADECOINVN</title>
+    <title>Trang Chủ - TRADECOINVN</title>
     <meta name="description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta property="og:title" content="Trang chủ - TRADECOINVN" />
+    <meta property="og:title" content="Trang Chủ - TRADECOINVN" />
     <meta property="og:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta property="og:image" content="%VITE_BASE_URL%/logotitle.png" />
+    <meta property="og:image" content="<%= BASE_URL %>/logotitle.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="%VITE_BASE_URL%" />
+    <meta property="og:url" content="<%= BASE_URL %>" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Trang chủ - TRADECOINVN" />
+    <meta name="twitter:title" content="Trang Chủ - TRADECOINVN" />
     <meta name="twitter:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta name="twitter:image" content="%VITE_BASE_URL%/logotitle.png" />
-    <link rel="canonical" href="%VITE_BASE_URL%" />
+    <meta name="twitter:image" content="<%= BASE_URL %>/logotitle.png" />
+    <link rel="canonical" href="<%= BASE_URL %>" />
+    <!-- Google Analytics 4 -->
+    <script>
+      (function() {
+        const gaId = '<%= GA_MEASUREMENT_ID %>';
+        if (gaId && gaId !== '<%= GA_MEASUREMENT_ID %>') {
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(script);
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', gaId, {
+            'page_title': 'Trang Chủ - TRADECOINVN',
+            'page_location': '<%= BASE_URL %>',
+            'page_path': '/'
+          });
+          gtag('event', 'page_view', {
+            'page_title': 'Trang Chủ - TRADECOINVN',
+            'page_location': '<%= BASE_URL %>',
+            'page_path': '/'
+          });
+        }
+        console.log('GA_MEASUREMENT_ID:', '<%= GA_MEASUREMENT_ID %>');
+        console.log('BASE_URL:', '<%= BASE_URL %>');
+      })();
+    </script>
     <link rel="stylesheet" href="./src/index.css">
-</head>
+  </head>
   <body>
-    <div id="root" ></div>
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

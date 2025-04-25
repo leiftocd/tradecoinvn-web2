@@ -8,29 +8,31 @@
     <meta name="description" content="Tham gia sàn giao dịch MEXC cùng TradeCoinVN để được hưởng nhiều quyền lợi và cơ hội trong việc đầu tư của bạn" />
     <meta property="og:title" content="Tham gia sàn giao dịch MEXC cùng TradeCoinVN" />
     <meta property="og:description" content="Tham gia sàn giao dịch MEXC cùng TradeCoinVN để được hưởng nhiều quyền lợi và cơ hội trong việc đầu tư của bạn" />
-    <meta property="og:image" content="https://tradecoinvn-web2.vercel.app//bannerLeft.png" />
+    <meta property="og:image" content="https://tradecoinvn-web2.vercel.app//bannerlogo.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://tradecoinvn-web2.vercel.app//MEXC" />
+    <meta property="og:url" content="https://tradecoinvn-web2.vercel.app/MEXC" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tham gia sàn giao dịch MEXC cùng TradeCoinVN" />
     <meta name="twitter:description" content="Tham gia sàn giao dịch MEXC cùng TradeCoinVN để được hưởng nhiều quyền lợi và cơ hội trong việc đầu tư của bạn" />
-    <meta name="twitter:image" content="https://tradecoinvn-web2.vercel.app//bannerLeft.png" />
+    <meta name="twitter:image" content="https://tradecoinvn-web2.vercel.app//bannerlogo.png" />
+    <!-- Google Analytics 4 -->
     <script>
-      if ('G-121313131' !== 'G-121313131') {
-        (function() {
+      (function() {
+        const gaId = 'G-121313155';
+        if (gaId) {
           var script = document.createElement('script');
           script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-121313131';
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
           document.head.appendChild(script);
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-121313131');
+          gtag('config', gaId);
           gtag('event', 'page_view', {
             'page_title': 'Tham gia sàn giao dịch MEXC cùng TradeCoinVN',
-            'page_location': 'https://tradecoinvn-web2.vercel.app//MEXC',
+            'page_location': 'https://tradecoinvn-web2.vercel.app/MEXC',
             'page_path': '/MEXC'
           });
           gtag('event', 'redirect', {
@@ -38,13 +40,12 @@
             'event_label': 'MEXC',
             'destination': 'https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA'
           });
-        })();
-      }
+        }
+      })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="/loading.css" />
   </head>
-
   <body>
     <section class="h-screen flex w-full justify-center py-[4rem_0]">
       <div class="redirectPage max-w-[1080px] flex flex-col gap-[12rem] w-full">
@@ -53,9 +54,9 @@
             <img class="object-cover w-full h-auto" src="/bannerlogo.png" alt="" />
           </div>
           <div class="title-div uppercase font-bold text-[3rem] text-white leading-[100%] justify-between flex h-full flex-col">
-            Cộng đồng Crypto
+            Cộng đồng Crypto
             <span class="title-span uppercase font-bold text-[3rem] text-white leading-[100%]">
-              top 1 Việt Nam
+              Top 1 Việt Nam
             </span>
           </div>
         </div>
@@ -64,7 +65,7 @@
             <!-- svg icon -->
           </div>
           <div class="flex gap-4">
-            <h2 class="h2-load text-white text-[40px] font-bold">Đang điều hướng</h2>
+            <h2 class="h2-load text-white text-[40px] font-bold">Đang điều hướng</h2>
             <span class="text-white text-[40px] font-bold dotJump1">.</span>
             <span class="text-white text-[40px] font-bold dotJump2">.</span>
             <span class="text-white text-[40px] font-bold dotJump3">.</span>
@@ -77,8 +78,19 @@
     </section>
     <script>
       setTimeout(function () {
-        window.location.href = "https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA";
-      }, 1500);
+        if (window.gtag) {
+          gtag('event', 'redirect', {
+            'event_category': 'Redirect',
+            'event_label': 'MEXC',
+            'destination': 'https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA',
+            'event_callback': function () {
+              window.location.href = 'https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA';
+            }
+          });
+        } else {
+          window.location.href = 'https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA';
+        }
+      }, 2000);
     </script>
   </body>
 </html>
