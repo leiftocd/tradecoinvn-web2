@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import {  useRef } from "react";
 import { Card } from "../../../components/Card/Card";
 import { Slide } from "../../../components/Slide/Slide";
 import "swiper/css/free-mode";
@@ -81,7 +81,6 @@ function Market() {
     },
   ];
 
-  const [activeIndex, setActiveIndex] = useState(0);
   const slideRef = useRef(null);
 
   const restartAutoplay = () => {
@@ -191,9 +190,9 @@ function Market() {
                 slidesPerView={3} 
                 slidesPerGroup={1} 
                 spaceBetween={10}
-                touchRatio={0.8}
-                speed={600} 
+                touchRatio={1}
                 modules={[Autoplay]} 
+                speed={500}
                 loop={true}
                 loopAdditionalSlides={1} 
                 autoplay={{
@@ -203,7 +202,6 @@ function Market() {
                 onSwiper={(swiper) => {
                   slideRef.current = swiper;
                 }}
-                onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 onTouchStart={stopAutoplay}
                 onTouchEnd={handleTouchEnd}
                 className="slide-content"
@@ -224,7 +222,7 @@ function Market() {
                         title={`Đăng kí tài khoản ${exchange.title}`}
                         description={["Mã giới thiệu:", exchange.des ]}
                         slug={exchange.title}
-                        className={index === activeIndex ? "active" : ""}
+                        
                       />
                     </div>
                   </Slide.Item>
