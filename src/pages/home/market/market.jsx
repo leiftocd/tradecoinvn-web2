@@ -80,8 +80,9 @@ function Market() {
       des: "grc2",
     },
   ];
-
+  
   const slideRef = useRef(null);
+  const touchStartX = useRef(null);
 
   const restartAutoplay = () => {
     if (slideRef.current && slideRef.current.autoplay) {
@@ -97,6 +98,25 @@ function Market() {
 
   const handleTouchEnd = () => {
     setTimeout(restartAutoplay, 2000); // Khởi động lại autoplay sau 2 giây
+    touchStartX.current = null; // Reset touch start
+  };
+
+  const handleTouchStart = (swiper, event) => {
+    stopAutoplay();
+    touchStartX.current = event.touches[0].clientX; // Lưu vị trí bắt đầu vuốt
+  };
+
+  const handleTouchMove = (swiper, event) => {
+    if (!touchStartX.current) return;
+    const touchCurrentX = event.touches[0].clientX;
+    const deltaX = touchCurrentX - touchStartX.current;
+
+    // Chỉ cho phép vuốt từ phải sang trái (deltaX < 0)
+    if (deltaX > 0) {
+      swiper.allowTouchMove = false; // Vô hiệu hóa vuốt ngược (trái → phải)
+    } else {
+      swiper.allowTouchMove = true; // Cho phép vuốt từ phải sang trái
+    }
   };
 
   return (
@@ -187,47 +207,48 @@ function Market() {
                 src="/smoker.png"
               />
               <Slide.Root
-                slidesPerView={3} 
-                slidesPerGroup={1} 
-                spaceBetween={10}
-                touchRatio={1}
-                modules={[Autoplay]} 
-                speed={500}
-                loop={true}
-                loopAdditionalSlides={1} 
-                autoplay={{
-                  delay: 2500,
-                  disableOnInteraction: true,
-                }}
-                onSwiper={(swiper) => {
-                  slideRef.current = swiper;
-                }}
-                onTouchStart={stopAutoplay}
-                onTouchEnd={handleTouchEnd}
-                className="slide-content"
-                breakpoints={{
-                  0: { slidesPerView: 2.5, spaceBetween: 5 },
-                  375: { slidesPerView: 2.5, spaceBetween: 10 },
-                  480: { slidesPerView: 3, spaceBetween: 15 },
-                  640: { slidesPerView: 3, spaceBetween: 15 },
-                  768: { slidesPerView: 3, spaceBetween: 20 },
-                  1024: { slidesPerView: 3, spaceBetween: 30 },
-                }}
-              >
-                {exchanges.map((exchange, index) => (
-                  <Slide.Item key={index}>
-                    <div className="p-[1rem]">
-                      <Card
-                        img={exchange.img}
-                        title={`Đăng kí tài khoản ${exchange.title}`}
-                        description={["Mã giới thiệu:", exchange.des ]}
-                        slug={exchange.title}
-                        
-                      />
-                    </div>
-                  </Slide.Item>
-                ))}
-              </Slide.Root>
+      slidesPerView={3} // Số nguyên để snap rõ
+      slidesPerGroup={1} // Chuyển từng slide một
+      spaceBetween={10}
+      touchRatio={0.8} // Vuốt mượt
+      speed={600} // Chuyển đổi mượt
+      modules={[Autoplay]}
+      loop={true}
+      loopAdditionalSlides={1}
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: true,
+      }}
+      onSwiper={(swiper) => {
+        slideRef.current = swiper;
+      }}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      className="slide-content"
+      breakpoints={{
+        0: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 5 },
+        375: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 10 },
+        480: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
+        640: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
+        768: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 20 },
+        1024: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 },
+      }}
+    >
+      {exchanges.map((exchange, index) => (
+        <Slide.Item key={index}>
+          <div className="p-[1rem]">
+            <Card
+              img={exchange.img}
+              loading="lazy"
+              title={`Đăng kí tài khoản ${exchange.title}`}
+              description={["Mã giới thiệu:", exchange.des]}
+              slug={exchange.title}
+            />
+          </div>
+        </Slide.Item>
+      ))}
+    </Slide.Root>
               <div className="w-full flex justify-end">
                 <img className="max-w-[12.5rem] h-[12.5rem]" src="./build.png" alt="" />
               </div>

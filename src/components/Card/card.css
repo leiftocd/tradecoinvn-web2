@@ -38,8 +38,13 @@
       padding: 2rem 1rem !important;
     }
     .card:hover {
-      box-shadow: rgba(0, 233, 236, 0.475) 0px 0px 12px 0px;
+      box-shadow: unset;
+      border: unset;
+      background: linear-gradient(180deg, #00e9ec99 0%, #00000099 100%);
+    }
+    .card:active{
       background: linear-gradient(179.94deg, #00e9ec 0.05%, #000000 129.69%);
+      box-shadow: 0px 0px 20px 0px #00e9ec;
       border: #00e9ec 1px solid;
     }
     .card img{
