@@ -1,8 +1,8 @@
-import {  useRef } from "react";
+import { useRef } from "react";
 import { Card } from "../../../components/Card/Card";
 import { Slide } from "../../../components/Slide/Slide";
 import "swiper/css/free-mode";
-import {  Autoplay } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "./market.css";
 
 function Market() {
@@ -43,45 +43,10 @@ function Market() {
       link: "https://www.bitget.com/vi/expressly?channelCode=TradeCoinVietnam&vipCode=gcr2&languageType=4",
       des: "grc2",
     },
-    {
-      title: "BingX",
-      img: "/bingX.png",
-      link: "https://bingx.com/en/accounts/invite/VR26GG",
-      des: "VR26GG",
-    },
-    {
-      title: "OKX",
-      img: "/okx.png",
-      link: "https://www.okx.com/vi/join/81726041",
-      des: "81726041",
-    },
-    {
-      title: "MEXC",
-      img: "/mexc.png",
-      link: "https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA",
-      des: "121eFA",
-    },
-    {
-      title: "Bybit",
-      img: "/byBit.png",
-      link: "https://www.bybitglobal.com/en/sign-up?affiliate_id=19986",
-      des: "19986",
-    },
-    {
-      title: "Binance",
-      img: "/binance.png",
-      link: "https://accounts.binance.com/vi/register?ref=DCAGBWQ6",
-      des: "DCAGBWQ6",
-    },
-    {
-      title: "Bitget",
-      img: "/bitget.png",
-      link: "https://www.bitget.com/vi/expressly?channelCode=TradeCoinVietnam&vipCode=gcr2&languageType=4",
-      des: "grc2",
-    },
   ];
-  
+
   const slideRef = useRef(null);
+  const swiperRef = useRef(null);
   const touchStartX = useRef(null);
 
   const restartAutoplay = () => {
@@ -96,14 +61,10 @@ function Market() {
     }
   };
 
-  const handleTouchEnd = () => {
-    setTimeout(restartAutoplay, 2000); // Khởi động lại autoplay sau 2 giây
-    touchStartX.current = null; // Reset touch start
-  };
-
   const handleTouchStart = (swiper, event) => {
     stopAutoplay();
-    touchStartX.current = event.touches[0].clientX; // Lưu vị trí bắt đầu vuốt
+    touchStartX.current = event.touches[0].clientX;
+    swiperRef.current = swiper;
   };
 
   const handleTouchMove = (swiper, event) => {
@@ -111,17 +72,24 @@ function Market() {
     const touchCurrentX = event.touches[0].clientX;
     const deltaX = touchCurrentX - touchStartX.current;
 
-    // Chỉ cho phép vuốt từ phải sang trái (deltaX < 0)
     if (deltaX > 0) {
-      swiper.allowTouchMove = false; // Vô hiệu hóa vuốt ngược (trái → phải)
+      swiper.allowTouchMove = false; // chặn vuốt sang phải
     } else {
-      swiper.allowTouchMove = true; // Cho phép vuốt từ phải sang trái
+      swiper.allowTouchMove = true; // cho phép vuốt sang trái
     }
+  };
+
+  const handleTouchEnd = () => {
+    if (swiperRef.current) {
+      swiperRef.current.allowTouchMove = true; // reset lại
+    }
+    setTimeout(restartAutoplay, 2000);
+    touchStartX.current = null;
   };
 
   return (
     <section id="market">
-      <div className="w-full h-full mx-[auto] flex py-[3rem_0] justify-center max-w-[108rem] px-[3rem] market-res max-sm:px-[2rem]">
+      <div className="w-full h-full mx-auto flex py-[3rem_0] justify-center max-w-[108rem] px-[3rem] market-res max-sm:px-[2rem]">
         <div className="warpper-content gap-[2rem] flex market-res">
           <div className="col-left">
             <div className="w-full relative">
@@ -131,7 +99,7 @@ function Market() {
                 </h2>
               </div>
               <div className="w-full flex flex-row gap-[2.5rem] justify-center market-col_res">
-                <div className="p-[0_1.5rem]  flex flex-col gap-[4rem]">
+                <div className="p-[0_1.5rem] flex flex-col gap-[4rem]">
                   <div className="relative">
                     <Card
                       img="/byBit.png"
@@ -141,7 +109,7 @@ function Market() {
                     />
                     <img
                       className="absolute aspect-square max-w-[16.4rem] -top-[40%] -translate-x-1/2 translate-y-1/2 left-[-10%] 
-                      max-lg:left-[-8%] max-lg:max-w-[13.4rem] max-lg:-top-[35%] max-md:max-w-[11.4rem] max-md:left-[-4%] max-md:-top-[35%]"
+                        max-lg:left-[-8%] max-lg:max-w-[13.4rem] max-lg:-top-[35%] max-md:max-w-[11.4rem] max-md:left-[-4%] max-md:-top-[35%]"
                       src="/smoker.png"
                     />
                   </div>
@@ -192,10 +160,11 @@ function Market() {
                 </div>
               </div>
               <div className="w-full flex justify-end">
-                  <img className="max-w-[20rem]" src="./build.png" alt="" />
+                <img className="max-w-[20rem]" src="./build.png" alt="" />
               </div>
             </div>
           </div>
+
           {/* Responsive */}
           <div className="market-slide">
             <h2 className="text-[3.2rem] font-bold leading-[1.3] my-[2rem_1.7rem] text-white">
@@ -207,48 +176,48 @@ function Market() {
                 src="/smoker.png"
               />
               <Slide.Root
-      slidesPerView={3} // Số nguyên để snap rõ
-      slidesPerGroup={1} // Chuyển từng slide một
-      spaceBetween={10}
-      touchRatio={0.8} // Vuốt mượt
-      speed={600} // Chuyển đổi mượt
-      modules={[Autoplay]}
-      loop={true}
-      loopAdditionalSlides={1}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: true,
-      }}
-      onSwiper={(swiper) => {
-        slideRef.current = swiper;
-      }}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
-      className="slide-content"
-      breakpoints={{
-        0: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 5 },
-        375: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 10 },
-        480: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
-        640: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
-        768: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 20 },
-        1024: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 },
-      }}
-    >
-      {exchanges.map((exchange, index) => (
-        <Slide.Item key={index}>
-          <div className="p-[1rem]">
-            <Card
-              img={exchange.img}
-              loading="lazy"
-              title={`Đăng kí tài khoản ${exchange.title}`}
-              description={["Mã giới thiệu:", exchange.des]}
-              slug={exchange.title}
-            />
-          </div>
-        </Slide.Item>
-      ))}
-    </Slide.Root>
+                slidesPerView={3}
+                slidesPerGroup={1}
+                spaceBetween={10}
+                touchRatio={0.8}
+                speed={600}
+                modules={[Autoplay]}
+                loop={true}
+                loopAdditionalSlides={1}
+                autoplay={{
+                  delay: 2500,
+                  disableOnInteraction: true,
+                }}
+                onSwiper={(swiper) => {
+                  slideRef.current = swiper;
+                }}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                className="slide-content"
+                breakpoints={{
+                  0: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 5 },
+                  375: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 10 },
+                  480: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
+                  640: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 15 },
+                  768: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 20 },
+                  1024: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 },
+                }}
+              >
+                {exchanges.map((exchange, index) => (
+                  <Slide.Item key={index}>
+                    <div className="p-[1rem]">
+                      <Card
+                        img={exchange.img}
+                        loading="lazy"
+                        title={`Đăng kí tài khoản ${exchange.title}`}
+                        description={["Mã giới thiệu:", exchange.des]}
+                        slug={exchange.title}
+                      />
+                    </div>
+                  </Slide.Item>
+                ))}
+              </Slide.Root>
               <div className="w-full flex justify-end">
                 <img className="max-w-[12.5rem] h-[12.5rem]" src="./build.png" alt="" />
               </div>
