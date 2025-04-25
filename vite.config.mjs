@@ -3,24 +3,21 @@ import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import config from './config.json';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default defineConfig(({ mode }) => {
   let baseUrl;
   if (mode === 'development') {
-    baseUrl = 'http://localhost:5173';
-  } else if (process.env.VITE_BASE_URL) {
-    baseUrl = process.env.VITE_BASE_URL;
+    baseUrl = `http://${process.env.HOST_NAME || 'localhost'}:${process.env.PORT || '5173'}`;
   } else {
-    baseUrl = config.Domain || process.env.URL || '';
+    baseUrl = process.env.VITE_BASE_URL || process.env.URL || config.Domain || '';
   }
+  
+  baseUrl = baseUrl.replace(/\/$/, '');
 
-  const gaMeasurementId = process.env.GA_MEASUREMENT_ID || '';
-
-  console.log('Vite environment:', process.env);
-  console.log('Vite inject data:', {
-    BASE_URL: baseUrl,
-    GA_MEASUREMENT_ID: gaMeasurementId,
-  });
+  const gaMeasurementId = process.env.GA_MEASUREMENT_ID || 'G-121313155';
 
   return {
     plugins: [

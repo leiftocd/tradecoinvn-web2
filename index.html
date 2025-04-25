@@ -8,41 +8,60 @@
     <meta name="description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
     <meta property="og:title" content="Trang Chủ - TRADECOINVN" />
     <meta property="og:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta property="og:image" content="<%= BASE_URL %>/logotitle.png" />
+    <meta property="og:image" content="%BASE_URL%/logotitle.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="<%= BASE_URL %>" />
+    <meta property="og:url" content="%BASE_URL%" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Trang Chủ - TRADECOINVN" />
     <meta name="twitter:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta name="twitter:image" content="<%= BASE_URL %>/logotitle.png" />
-    <link rel="canonical" href="<%= BASE_URL %>" />
+    <meta name="twitter:image" content="%BASE_URL%/logotitle.png" />
+    <link rel="canonical" href="%BASE_URL%" />
+    
+    <script>
+      (function() {
+        var baseUrl = "%BASE_URL%";
+        var gaMeasurementId = "%GA_MEASUREMENT_ID%";
+        
+        if (baseUrl === "%BASE_URL%" || baseUrl.includes("example.com.vn")) {
+          baseUrl = window.location.origin;
+        }
+        
+        if (gaMeasurementId === "%GA_MEASUREMENT_ID%") {
+          gaMeasurementId = "G-XXXXXXX"; 
+        }
+        
+        window.BASE_URL = baseUrl;
+        window.GA_MEASUREMENT_ID = gaMeasurementId;
+      })();
+    </script>
+    
     <!-- Google Analytics 4 -->
     <script>
       (function() {
-        const gaId = '<%= GA_MEASUREMENT_ID %>';
-        if (gaId && gaId !== '<%= GA_MEASUREMENT_ID %>') {
-          const script = document.createElement('script');
-          script.async = true;
-          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
-          document.head.appendChild(script);
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', gaId, {
-            'page_title': 'Trang Chủ - TRADECOINVN',
-            'page_location': '<%= BASE_URL %>',
-            'page_path': '/'
-          });
-          gtag('event', 'page_view', {
-            'page_title': 'Trang Chủ - TRADECOINVN',
-            'page_location': '<%= BASE_URL %>',
-            'page_path': '/'
-          });
-        }
-        console.log('GA_MEASUREMENT_ID:', '<%= GA_MEASUREMENT_ID %>');
-        console.log('BASE_URL:', '<%= BASE_URL %>');
+        document.addEventListener('DOMContentLoaded', function() {
+          const gaId = window.GA_MEASUREMENT_ID || "%GA_MEASUREMENT_ID%";
+          if (gaId && gaId !== "%GA_MEASUREMENT_ID%") {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+            document.head.appendChild(script);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', gaId, {
+              'page_title': 'Trang Chủ - TRADECOINVN',
+              'page_location': window.BASE_URL || "%BASE_URL%",
+              'page_path': '/'
+            });
+            gtag('event', 'page_view', {
+              'page_title': 'Trang Chủ - TRADECOINVN',
+              'page_location': window.BASE_URL || "%BASE_URL%",
+              'page_path': '/'
+            });
+          }
+        });
       })();
     </script>
     <link rel="stylesheet" href="./src/index.css">

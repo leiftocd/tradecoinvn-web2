@@ -8,38 +8,70 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST_NAME = process.env.HOST_NAME || 'localhost';
 const URL = process.env.VITE_BASE_URL || `http://${HOST_NAME}:${PORT}`;
-const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || 'G-121313155';
+const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || '';
 const GA_API_SECRET = process.env.GA_API_SECRET || '';
 
 console.log('Server environment:', {
+  URL: URL,
   VITE_BASE_URL: process.env.VITE_BASE_URL,
   GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist'), { 
+  index: false 
+}));
 
-// Route cho trang chủ
+const processHtmlFile = (filePath) => {
+  if (fs.existsSync(filePath)) {
+    let htmlContent = fs.readFileSync(filePath, 'utf-8');
+    return htmlContent
+      .replace(/%BASE_URL%/g, URL)
+      .replace(/%GA_MEASUREMENT_ID%/g, GA_MEASUREMENT_ID);
+  }
+  return null;
+};
+
 app.get('/', (req, res) => {
   const htmlFile = path.join(__dirname, 'dist', 'index.html');
-  let htmlContent = fs.readFileSync(htmlFile, 'utf-8');
-  htmlContent = htmlContent
-    .replace(/%BASE_URL%/g, URL)
-    .replace(/%GA_MEASUREMENT_ID%/g, GA_MEASUREMENT_ID);
-  res.send(htmlContent);
+  const processedHtml = processHtmlFile(htmlFile);
+  
+  if (processedHtml) {
+    if (GA_MEASUREMENT_ID && GA_API_SECRET) {
+      try {
+        axios.post(
+          `https://www.google-analytics.com/mp/collect?measurement_id=${GA_MEASUREMENT_ID}&api_secret=${GA_API_SECRET}`,
+          {
+            client_id: 'server-index',
+            events: [
+              {
+                name: 'view_index',
+                params: {
+                  page_location: URL,
+                  page_title: 'Trang Chủ - TRADECOINVN',
+                },
+              },
+            ],
+          }
+        );
+        console.log('GA event sent for index page');
+      } catch (error) {
+        console.error('Error sending GA event:', error.message);
+      }
+    }
+    
+    return res.send(processedHtml);
+  } else {
+    return res.status(404).send('Index file not found');
+  }
 });
 
-// Route cho các trang động
 app.get('/:slug', async (req, res, next) => {
   const slug = req.params.slug;
   const htmlFile = path.join(__dirname, 'public', `${slug}.html`);
+  const processedHtml = processHtmlFile(htmlFile);
 
-  if (fs.existsSync(htmlFile)) {
-    let htmlContent = fs.readFileSync(htmlFile, 'utf-8');
-    htmlContent = htmlContent
-      .replace(/%BASE_URL%/g, URL)
-      .replace(/%GA_MEASUREMENT_ID%/g, GA_MEASUREMENT_ID);
-
+  if (processedHtml) {
     if (GA_MEASUREMENT_ID && GA_API_SECRET) {
       try {
         await axios.post(
@@ -63,22 +95,23 @@ app.get('/:slug', async (req, res, next) => {
       }
     }
 
-    return res.send(htmlContent);
+    return res.send(processedHtml);
   } else {
     return next();
   }
 });
 
-// Fallback cho SPA
 app.get('*', (req, res) => {
   const htmlFile = path.join(__dirname, 'dist', 'index.html');
-  let htmlContent = fs.readFileSync(htmlFile, 'utf-8');
-  htmlContent = htmlContent
-    .replace(/%BASE_URL%/g, URL)
-    .replace(/%GA_MEASUREMENT_ID%/g, GA_MEASUREMENT_ID);
-  res.send(htmlContent);
+  const processedHtml = processHtmlFile(htmlFile);
+  
+  if (processedHtml) {
+    return res.send(processedHtml);
+  } else {
+    return res.status(404).send('Not found');
+  }
 });
 
 app.listen(PORT, HOST_NAME, () => {
-  console.log(`🚀 Server is running at ${URL}`);
+  console.log(`🚀 Server is running at ${HOST_NAME}:${PORT}`);
 });
