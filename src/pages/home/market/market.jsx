@@ -43,6 +43,42 @@ function Market() {
       link: "https://www.bitget.com/vi/expressly?channelCode=TradeCoinVietnam&vipCode=gcr2&languageType=4",
       des: "grc2",
     },
+    {
+      title: "BingX",
+      img: "/bingX.png",
+      link: "https://bingx.com/en/accounts/invite/VR26GG",
+      des: "VR26GG",
+    },
+    {
+      title: "OKX",
+      img: "/okx.png",
+      link: "https://www.okx.com/vi/join/81726041",
+      des: "81726041",
+    },
+    {
+      title: "MEXC",
+      img: "/mexc.png",
+      link: "https://www.mexc.com/vi-VN/register?inviteCode=mexc-121eFA",
+      des: "121eFA",
+    },
+    {
+      title: "Bybit",
+      img: "/byBit.png",
+      link: "https://www.bybitglobal.com/en/sign-up?affiliate_id=19986",
+      des: "19986",
+    },
+    {
+      title: "Binance",
+      img: "/binance.png",
+      link: "https://accounts.binance.com/vi/register?ref=DCAGBWQ6",
+      des: "DCAGBWQ6",
+    },
+    {
+      title: "Bitget",
+      img: "/bitget.png",
+      link: "https://www.bitget.com/vi/expressly?channelCode=TradeCoinVietnam&vipCode=gcr2&languageType=4",
+      des: "grc2",
+    },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -154,13 +190,7 @@ function Market() {
               <Slide.Root
                 slidesPerView={3}
                 spaceBetween={10}
-                freeMode={{
-                  enabled: false,
-                  momentum: true, // Quán tính khi vuốt
-                  momentumRatio: 1, // Tăng độ mượt
-                  momentumBounce: false, // Tắt bounce để vuốt tự nhiên
-                }}
-                touchRatio={1} // Tăng độ nhạy vuốt
+                touchRatio={.8} // Tăng độ nhạy vuốt
                 modules={[FreeMode, Autoplay]}
                 loop={true}
                 autoplay={{
@@ -180,7 +210,7 @@ function Market() {
                   480: { slidesPerView: 3, spaceBetween: 15 },
                   640: { slidesPerView: 3, spaceBetween: 15 },
                   768: { slidesPerView: 3, spaceBetween: 20 },
-                  1024: { slidesPerView: 2.5, spaceBetween: 30 },
+                  1024: { slidesPerView: 3, spaceBetween: 30 },
                 }}
               >
                 {exchanges.map((exchange, index) => (

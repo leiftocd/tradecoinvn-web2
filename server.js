@@ -6,7 +6,7 @@ const fs = require('fs');
 const axios = require('axios');
 const app = express();
 
-const PORT = process.env.PORT || 5000 ;
+const PORT = process.env.PORT || 3000 ;
 const HOST_NAME = process.env.HOST_NAME;
 const URL = process.env.URL;
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || '';
