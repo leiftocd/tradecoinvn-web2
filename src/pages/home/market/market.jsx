@@ -97,7 +97,7 @@ function Market() {
   };
 
   const handleTouchEnd = () => {
-    setTimeout(restartAutoplay, 2000); // Khởi động lại autoplay sau 3 giây
+    setTimeout(restartAutoplay, 2000); // Khởi động lại autoplay sau 2 giây
   };
 
   return (
