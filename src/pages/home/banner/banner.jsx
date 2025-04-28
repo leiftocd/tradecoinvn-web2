@@ -27,7 +27,7 @@ function Banner() {
                 '>
                     <img src={BannerImgLeft} alt="banner" className=' w-full ml-[8%]' loading='lazy'/>
                 </div>
-                <div className=" flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[1rem]
+                <div className=" flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[1rem] gap-banner_res
                 max-sm:px-[0] res-w" >
                     <div className='  flex flex-col items-center 
                     max-sm:gap-[1rem]  max-sm:px-[0rem] m-mb-1'>

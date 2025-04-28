@@ -130,6 +130,11 @@ section{
   filter: brightness(1.20);
 
 }
+.imgBannerPc{
+  max-width: 100%;
+  width: 100%;
+}
+
 @keyframes ring2 {
   0%   { transform: rotate(0);  }
   10%  { transform: rotate(0.5deg); }
@@ -166,10 +171,16 @@ section{
   }
   .res-15vw{
     padding-top: 5vw;
-  
+  }
+  .imgBannerPc{
+    max-width: 200%;
+    width: 200%;
   }
 }
 @media (max-width: 1440px){
+  .gap-banner_res{
+    gap: 0;
+  }
   .btn-banner1{
     max-width: 66%;
   }
@@ -231,9 +242,6 @@ section{
   .warpper-content{
     max-width: unset;
     width:100%;
-  }
-  .imgBannerPc{
-    max-width: 100%;
   }
 }
 @media (max-width: 990px){

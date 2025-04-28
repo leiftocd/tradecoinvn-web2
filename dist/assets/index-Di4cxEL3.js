@@ -57,7 +57,7 @@ Please change the parent <Route path="${x}"> to <Route path="${x==="/"?"*":`${x}
             max-sm:gap-[3rem]
             `,children:[T.jsx("div",{className:` banner-img w-full flex items-center max-w-[22%] 
                 max-sm:hidden
-                `,children:T.jsx("img",{src:fd,alt:"banner",className:" w-full ml-[8%]",loading:"lazy"})}),T.jsxs("div",{className:` flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[1rem]
+                `,children:T.jsx("img",{src:fd,alt:"banner",className:" w-full ml-[8%]",loading:"lazy"})}),T.jsxs("div",{className:` flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[1rem] gap-banner_res
                 max-sm:px-[0] res-w`,children:[T.jsxs("div",{className:`  flex flex-col items-center 
                     max-sm:gap-[1rem]  max-sm:px-[0rem] m-mb-1`,children:[T.jsx("div",{className:`whitespace-pre-line inline-block text-[#00E9EC] text-center 
                             [webkit-text-stroke-width:1px] [webkit-text-stroke-color:#00E9EC] leading-[100%]
