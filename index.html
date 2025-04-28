@@ -8,7 +8,18 @@
     <meta name="description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
     <meta property="og:title" content="Trang Chủ - TRADECOINVN" />
     <meta property="og:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Trang Chủ - TRADECOINVN" />
+    <meta name="twitter:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
+    <meta property="og:image" content="%BASE_URL%/logotitle.png" />
+    <meta property="og:url" content="%BASE_URL%" />
+    <meta name="twitter:image" id="twitter-image" content="%BASE_URL%/logotitle.png" />
+    <link rel="canonical" href="%BASE_URL%" />
+    <link rel="stylesheet" href="./src/index.css">
+
     <script>
       (function() {
         var baseUrl = "%BASE_URL%";
@@ -26,26 +37,9 @@
         window.GA_MEASUREMENT_ID = gaMeasurementId;
       })();
     </script>
-    
-    <meta property="og:image" id="og-image">
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:url" id="og-url">
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Trang Chủ - TRADECOINVN" />
-    <meta name="twitter:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
-    <meta name="twitter:image" id="twitter-image">
-    <link rel="canonical" id="canonical-link">
-    
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-
-        document.getElementById('og-image').setAttribute('content', window.BASE_URL + '/logotitle.png');
-        document.getElementById('og-url').setAttribute('content', window.BASE_URL);
-        document.getElementById('twitter-image').setAttribute('content', window.BASE_URL + '/logotitle.png');
-        document.getElementById('canonical-link').setAttribute('href', window.BASE_URL);
         
+    <script>
+      document.addEventListener('DOMContentLoaded', function() { 
         // Google Analytics
         const gaId = window.GA_MEASUREMENT_ID;
         if (gaId) {
@@ -69,7 +63,6 @@
         }
       });
     </script>
-    <link rel="stylesheet" href="./src/index.css">
   </head>
   <body>
     <div id="root"></div>

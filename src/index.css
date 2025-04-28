@@ -149,6 +149,12 @@ section{
   100% { transform: rotate(0); }
 }
 
+.swiper-container {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 @media (min-width: 1920px){
   .sup-aura{
     width: 5%;
@@ -536,6 +542,9 @@ section{
   }
 }
 @media (max-width: 480px){
+  #beneBox h2{
+    font-size: 14px;
+  }
   .benefit-tit{
     font-size: 2rem;
   }
@@ -571,7 +580,7 @@ section{
   }
   .textBtn,
   .textBtnLast{
-      font-size: 1.2em !important;
+      font-size: 1.4rem !important;
   }
   .banner{
     padding: 0.8rem 0 .5rem !important;

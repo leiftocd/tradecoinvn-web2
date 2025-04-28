@@ -179,7 +179,7 @@ function Market() {
                 slidesPerView={3}
                 slidesPerGroup={1}
                 spaceBetween={10}
-                touchRatio={1}
+                touchRatio={0.8}
                 speed={300}
                 modules={[Autoplay]}
                 loop={true}
