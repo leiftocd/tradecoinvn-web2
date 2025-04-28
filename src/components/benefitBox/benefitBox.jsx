@@ -24,14 +24,16 @@ function BenefitBox({ spanText, srcImg, titleText, id, activeBox, onBoxClick, id
                 <div
                     className=" webfill flex rounded-[30px] bg-gradient-to-r from-[rgba(17,93,242,0.16)] to-[rgba(0,233,236,0.16)] bene-box relative pb-[4rem] "
                 >
-                    <div className="flex flex-col relative w-full justify-center-center">
+                    <div className={`flex flex-col relative w-full justify-center-center  ${
+                                    isHovered || isActive ? 'pb-[0]' : 'pd-bene'
+                                }`}>
                         <div className="beneBox-hidden w-full flex items-center border-white border-l-2 h-[60px]">
                             <p className="text-[60px] font-bold text-[#00E9EC] pl-[2rem] h-full text-center leading-[100%]">
                                 {spanText}
                             </p>
                         </div>
-                        <div className="p-[.5rem]">
-                            <h2 className="mt-[2rem] mb-[1.5rem] text-left text-[30px] font-[700] text-white 
+                        <div className="p-[.5rem] pd-bene_h2">
+                            <h2 className="mt-[1rem] mb-[1.5rem] text-left text-[30px] font-[700] text-white 
                              max-sm:mt-0 max-sm:mb-0 max-sm:pl-[1rem]" 
                              >{titleText.split('\n').map((line, index) => (
                                 <React.Fragment key={index}>
@@ -51,7 +53,7 @@ function BenefitBox({ spanText, srcImg, titleText, id, activeBox, onBoxClick, id
                                 }`}
                             />
                         </div>
-                        <div id={idBeneImg} className="max-w-full relative opacity-[1] bottom-[1rem] mt-[2rem] max-sm:mt-0" >
+                        <div id={idBeneImg} className="max-w-full relative opacity-[1] bottom-[1rem] mt-[2rem] max-sm:mt-0 flex justify-center" >
                             <img
                                 src={srcImg}
                                 alt="Benefit"
@@ -63,7 +65,7 @@ function BenefitBox({ spanText, srcImg, titleText, id, activeBox, onBoxClick, id
                     </div>
                     <div
                         className={`arrow absolute transition-all duration-1000 ${
-                            isHovered || isActive ? 'left-[85%] bottom-[90%]' : 'left-[40%] bottom-[0]'
+                            isHovered || isActive ? 'left-[88%] bottom-[88%]' : 'left-[40%] bottom-[0]'
                         }`}
                     >
                         <img

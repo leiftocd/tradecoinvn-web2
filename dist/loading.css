@@ -34,15 +34,21 @@ section{
     margin: 0 auto !important;
 }
 @media (max-width: 1200px){
+    .res-logo{
+        height: 5.5rem;
+    }
     .title-div,
     .title-span{
-        font-size: 28px !important;
+        font-size: 25px !important;
     }
     .h2-load{
         font-size: 34px !important; 
     }
 }
 @media (max-width: 990px){
+    .res-logo{
+        height: 4.5rem;
+    }
     .load-title{
         height: 60px;
     }
@@ -61,7 +67,10 @@ section{
         font-size: 28px !important; 
     }
 }
-@media (max-width: 600px){
+@media (max-width: 640px){
+    .res-logo{
+        height: 3.5rem;
+    }
     .load-title{
         height: 50px;
         justify-content: end;

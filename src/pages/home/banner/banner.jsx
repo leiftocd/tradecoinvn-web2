@@ -2,8 +2,7 @@ import BannerImgLeft from '../../../../public/bannerLeft.png'
 import BannerImgRight from '../../../../public/bannerRight.png'
 import BannerLogo from '../../../../public/bannerlogo.png'
 import BannerBtn from '../../../components/bannerBtn.jsx'
-import Bufalo from '../../../../public/all-in.png'
-// import BannerContentBg from '../../../../public/bannerContentBg.png'
+import BannerContentBg from '../../../../public/bannerContentBg.png'
 import { useState } from 'react'
 import Popup from '../../../components/popup/popup.jsx'
 function Banner() {
@@ -28,7 +27,7 @@ function Banner() {
                 '>
                     <img src={BannerImgLeft} alt="banner" className=' w-full ml-[8%]' loading='lazy'/>
                 </div>
-                <div className=" flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[5rem]
+                <div className=" flex items-center justify-center flex-col  px-[0] mx-[auto] max-w-1/2 gap-[1rem]
                 max-sm:px-[0] res-w" >
                     <div className='  flex flex-col items-center 
                     max-sm:gap-[1rem]  max-sm:px-[0rem] m-mb-1'>
@@ -38,7 +37,7 @@ function Banner() {
                             max-sm:text-[3.5rem] max-sm:px-[0] max-sm:-tracking-[1px] max-sm:text-neon res-w-4k" >
                                 Cộng đồng Crypto
                                 top 1 Việt Nam
-                        </div>
+                        </div>      
                         <div className=' max-w-[14.7rem] hidden w-full items-center resMImg '>
                             <img src={BannerImgLeft} alt="banner" className=' w-full' loading='lazy'/>
                         </div>
@@ -47,24 +46,12 @@ function Banner() {
                     max-sm:gap-[2rem] '>
                         <div className='w-full flex flex-col items-center justify-center gap-[1.5rem]  px-[1rem] 
                         max-sm:gap-[1rem] max-sm:px-[0] '>
-                            <div className='relative w-full h-full flex items-center justify-center max-w-[55%] btn-vip '>
-                                <button className="
-                                    flex items-center justify-center w-full py-[2%] bannerBtnLast textBtnLast
-                                    relative text-white text-lg font-semibold cursor-pointer 
-                                    [clip-path:polygon(15px_0%,100%_0%,100%_calc(100%-15px),calc(100%-15px)_100%,0%_100%,0%_15px)]
-                                    " onClick={handleOpen}> Tham gia nhóm VIP call kèo
-                                    
-                                </button>
-                                <img src={Bufalo} alt="" className='absolute top-1/2 right-[-10%] z-100 -translate-y-[70%]
-                                '/>
-
+                            <div className='flex items-center justify-center w-full  max-w-[60%] ml-[5.5%] btn-banner1
+                            ' 
+                            onClick={handleOpen}
+                            >
+                                <img src={BannerContentBg} alt="" className='imgBannerPc max-w-[100%] max-sm:max-w-[100%] btn-vip object-cover' loading='lazy'/>
                             </div>
-                             {/* <div className='flex items-center justify-center w-full  max-w-[90%] ml-[5%]
-                            '>
-                                 <button onClick={handleOpen} className= 'w-full h-full cursor-pointer'>
-                                    <img src={BannerContentBg} alt="" className='imgBannerPc max-w-[90%] max-sm:max-w-[100%]' loading='lazy'/>
-                                </button>
-                            </div> */}
                             <div className=' flex flex-col w-full gap-[1rem] items-center mid
                             max-sm:gap-[1rem] max-sm:px-[0]'>
                                 <BannerBtn slug={'link-telegram-channel'}

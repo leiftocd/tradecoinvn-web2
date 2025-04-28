@@ -18,6 +18,7 @@ body {
   position: relative;
   background-image: url('../public//bg.jpg');
   background-position-y: center;
+  background-attachment: fixed;
 }
 #root{
   width: 100%;
@@ -91,7 +92,9 @@ section{
   padding-top: 15vw;
 
 }
-
+.pd-bene{
+  padding-bottom: 5rem;
+}
 @layer utilities {
   .text-neon {
     text-shadow: 0 0 3px #03FBFE, 0 0 15px rgba(3, 251, 254, 0.8), 2px 2px 3px rgba(0, 0, 0, 0.6);
@@ -120,7 +123,12 @@ section{
 }
 .btn-vip{
   position: relative;
+  cursor: pointer;
   animation: ring2 3s linear infinite;
+}
+.btn-vip:hover{
+  filter: brightness(1.20);
+
 }
 @keyframes ring2 {
   0%   { transform: rotate(0);  }
@@ -150,9 +158,6 @@ section{
   .res-w-4k {
     font-size: 7.6rem;
   }
-  .benefit-tit{
-    font-size: 5.2rem;
-  }
   .banner-img{
     max-width: 25% !important;
   }
@@ -165,6 +170,9 @@ section{
   }
 }
 @media (max-width: 1440px){
+  .btn-banner1{
+    max-width: 66%;
+  }
   .textBtn,
   .textBtnLast{
       font-size: 1.3em;
@@ -182,6 +190,9 @@ section{
   }
 }
 @media (max-width: 1200px){
+  .btn-banner1{
+    max-width: 71%;
+  }
   .bannerBtnLast,
   .bannerBtn{
     max-width: 65% !important;
@@ -226,12 +237,21 @@ section{
   }
 }
 @media (max-width: 990px){
+  .beneBox-hidden p {
+    font-size: 50px;
+  }
+  .pd-bene_h2 h2{
+    font-size: 28px;
+  }
+  .bannerBtn{
+    padding: 2.2% !important;
+  }
+  .btn-banner1{
+    max-width: 76%;
+  }
   .market-col_res{
     gap: 1.5rem !important;
   }
-  /* .res-img img{
-    max-width: 80%;
-  } */
   .card{
     padding: 2rem !important;
   }
@@ -315,9 +335,6 @@ section{
   .banner-img{
     max-width: 18% !important;
   }
-  .benefit-tit{
-    font-size: 4vw;
-  }
   .footer-res{
     padding: 0 4% !important;
   }
@@ -342,6 +359,15 @@ section{
   }
 }
 @media (max-width: 640px){
+  .pd-bene{
+    padding-bottom: 0;
+  }
+  .bannerBtn{
+    padding: 2.5% !important;
+  }
+  .btn-banner1{
+    max-width: 77%;
+  }
   #beneBox:hover #bene1,
   #beneBox:hover #bene2,
   #beneBox:hover #bene3,
@@ -503,6 +529,12 @@ section{
   }
 }
 @media (max-width: 480px){
+  .benefit-tit{
+    font-size: 2rem;
+  }
+  .resMImg{
+    top: 35%;
+  }
   .btn-footer button{
     padding: 1rem;
   }
@@ -529,9 +561,6 @@ section{
   .bannerBtn{
     width: 100%;
     max-width: 70% !important;
-  }
-  .benefit-tit{
-    font-size: 2.2rem;
   }
   .textBtn,
   .textBtnLast{
@@ -580,5 +609,10 @@ section{
   .left-img{
     left: -8%;
     max-width: 18%;
+  }
+}
+@media (max-width: 375px) {
+  .resMImg{
+    top: 37%;
   }
 }

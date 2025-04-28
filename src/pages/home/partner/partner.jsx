@@ -39,7 +39,7 @@ const Partner = () => {
       <div className="partner-p w-full h-full mx-[auto] flex py-[3rem] justify-center max-w-[108rem] max-sm:py-[1.5rem]! ">
         <div className="warpper-content w-full flex flex-wrap gap-[3rem]">
           <div className="w-full mb-[2rem] max-sm:mb-[1rem]">
-            <h2 className="text-center text-6xl text-white font-bold max-sm:text-[3.2rem]">
+            <h2 className="text-center text-6xl text-white text-[4.48rem] font-bold max-sm:text-[3.2rem] max-xl:text-[3.75rem]">
               ĐỐI TÁC CHIẾN LƯỢC
             </h2>
           </div>

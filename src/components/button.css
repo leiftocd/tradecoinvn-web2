@@ -1,18 +1,4 @@
 @import "tailwindcss";
-.bannerBtnLast{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    background: var(--1, linear-gradient(90deg, #115DF2 -81.52%, #00E9EC 145.22%));
-    width: 100%;
-    padding: 2%;
-}
-.bannerBtnLast:hover{
-    outline: 0.5px solid #FFF;
-    background:  #00E9EC;
-    box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.53);
-}
 .textBtn{
     font-weight: 700;
     color: #fff;
@@ -52,7 +38,6 @@
 }
 .bannerBtn:hover{
     background: linear-gradient(90deg, rgba(17, 93, 242, 0.7) -22.61%, rgba(0, 233, 236, 0.7) 100%);
-    
 }
 .text-shadow-glow {
     text-shadow: 0 0 5px #03FBFE, 0 0 15px rgba(3, 251, 254, 0.8), 2px 2px 3px rgba(0, 0, 0, 0.6);
