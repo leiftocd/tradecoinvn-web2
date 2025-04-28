@@ -13,7 +13,7 @@ function BenefitContainerB({ activeBox, onBoxClick }) {
                     spanText="04"
                     idBeneImg="bene4"
                     srcImg={ImgFour}
-                    titleText="Cập nhật tin tức thị trường crypto tốc độ tên lửa"
+                    titleText="Tin tức crypto nhanh"
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
                 />
@@ -22,7 +22,7 @@ function BenefitContainerB({ activeBox, onBoxClick }) {
                     spanText="05"
                     idBeneImg="bene5"
                     srcImg={ImgFive}
-                    titleText="Hoạt động tri ân & gắn kết cộng đồng"
+                    titleText="Tri ân & kết nối"
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
 
@@ -32,7 +32,7 @@ function BenefitContainerB({ activeBox, onBoxClick }) {
                     idBeneImg="bene6"
                     spanText="06"
                     srcImg={ImgSix}
-                    titleText="Tham gia hệ sinh thái #1 Việt Nam"
+                    titleText="Hệ sinh thái top 1"
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
 

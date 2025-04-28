@@ -1,8 +1,8 @@
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FreeMode, Autoplay } from "swiper/modules";
+import { FreeMode, Autoplay, Navigation } from "swiper/modules"; // Added Navigation
 import useIsomorphicLayoutEffect from "use-isomorphic-layout-effect";
 import { Slide } from "../../../components/Slide/Slide";
-import './partner.css'
+import "./partner.css";
 import { useRef, useState } from "react";
 
 const Partner = () => {
@@ -10,9 +10,8 @@ const Partner = () => {
   const [slidesConfig, setSlidesConfig] = useState({
     slidesPerView: 4,
     spaceBetween: 0,
-    
-    
   });
+
   useIsomorphicLayoutEffect(() => {
     const updateSlidesConfig = () => {
       if (window.innerWidth <= 990 && window.innerWidth > 640) {
@@ -23,16 +22,21 @@ const Partner = () => {
         setSlidesConfig({ slidesPerView: 3, spaceBetween: 0 });
       }
 
-      swiperRef.current?.swiper?.update();
+      // Update Swiper and navigation
+      if (swiperRef.current?.swiper) {
+        swiperRef.current.swiper.update();
+        swiperRef.current.swiper.navigation?.update();
+      }
     };
 
     updateSlidesConfig();
-    window.addEventListener("resize", updateSlidesConfig); 
-    return () => window.removeEventListener("resize", updateSlidesConfig); 
+    window.addEventListener("resize", updateSlidesConfig);
+    return () => window.removeEventListener("resize", updateSlidesConfig);
   }, []);
+
   return (
     <section id="partner">
-        <div className="partner-p w-full h-full mx-[auto] flex py-[3rem] justify-center max-w-[108rem] max-sm:py-[1.5rem]! ">
+      <div className="partner-p w-full h-full mx-[auto] flex py-[3rem] justify-center max-w-[108rem] max-sm:py-[1.5rem]! ">
         <div className="warpper-content w-full flex flex-wrap gap-[3rem]">
           <div className="w-full mb-[2rem] max-sm:mb-[1rem]">
             <h2 className="text-center text-6xl text-white font-bold max-sm:text-[3.2rem]">
@@ -47,14 +51,15 @@ const Partner = () => {
               <Slide.Root
                 {...slidesConfig}
                 grabCursor={true}
-                modules={[FreeMode, Autoplay]}
+                modules={[FreeMode, Autoplay, Navigation]} // Added Navigation
                 loop={true}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 navigation={{
-                  nextEl: ".swiper-button-next-2",
-                  prevEl: ".swiper-button-prev-2",
+                  nextEl: ".swiper-button-prev-2", // Fixed: Correct selector
+                  prevEl: ".swiper-button-next-2", // Fixed: Correct selector
                   uniqueNavElements: true,
                 }}
+                onSwiper={(swiper) => (swiperRef.current = swiper)} // Assign Swiper instance
                 className="slide-content"
               >
                 <Slide.Item>
@@ -83,20 +88,20 @@ const Partner = () => {
                       alt=""
                     />
                   </div>
-                </Slide.Item>    
+                </Slide.Item>
                 <Slide.Item>
                   <div className="slide-item">
                     <img
-                      className="h-full w-full object-fit "
+                      className="h-full w-full object-fit"
                       src="/slide/slide5.png"
                       alt=""
                     />
                   </div>
                 </Slide.Item>
                 <Slide.Item>
-                  <div className="slide-item ">
+                  <div className="slide-item">
                     <img
-                      className="slide-image rounded-[50%]  max-w-full!"
+                      className="slide-image rounded-[50%] max-w-full!"
                       src="/slide/slide6.png"
                       alt=""
                     />
@@ -113,13 +118,13 @@ const Partner = () => {
                 </Slide.Item>
                 <Slide.Item>
                   <div className="slide-item bg-gray-800 border-[2px] border-white h-full w-full">
-                    <span 
-                      className="font-bold text-[6.4rem] text-[#00e9ec] flex items-center justify-center max-sm:text-[3.2rem]"
-                    >50+</span>
+                    <span className="font-bold text-[6.4rem] text-[#00e9ec] flex items-center justify-center max-sm:text-[3.2rem]">
+                      50+
+                    </span>
                   </div>
                 </Slide.Item>
               </Slide.Root>
-              <button className="swiper-button-prev-2 rounded-full ">
+              <button className="swiper-button-prev-2 rounded-full">
                 <IoIosArrowBack className="w-full h-full object-cover fill-white" />
               </button>
               <button className="swiper-button-next-2 rounded-full">
@@ -128,7 +133,7 @@ const Partner = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </section>
   );
 };

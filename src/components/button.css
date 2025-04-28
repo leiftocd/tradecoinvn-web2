@@ -4,11 +4,9 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border-radius: 4.6rem;
     background: var(--1, linear-gradient(90deg, #115DF2 -81.52%, #00E9EC 145.22%));
     width: 100%;
     padding: 2%;
-    max-width: 55%;
 }
 .bannerBtnLast:hover{
     outline: 0.5px solid #FFF;
@@ -22,7 +20,7 @@
 }
 .textBtnLast{
     font-weight: 700;
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: #000;
 }
 .bannerBtn{

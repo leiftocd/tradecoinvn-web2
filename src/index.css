@@ -118,6 +118,23 @@ section{
   90%  { transform: rotate(2deg); }
   100% { transform: rotate(0); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6); }
 }
+.btn-vip{
+  position: relative;
+  animation: ring2 3s linear infinite;
+}
+@keyframes ring2 {
+  0%   { transform: rotate(0);  }
+  10%  { transform: rotate(0.5deg); }
+  20%  { transform: rotate(-1deg); }
+  30%  { transform: rotate(1deg); }
+  40%  { transform: rotate(-1deg); }
+  50%  { transform: rotate(1deg); }
+  60%  { transform: rotate(-1deg); }
+  70%  { transform: rotate(1deg); }
+  80%  { transform: rotate(-1deg); }
+  90%  { transform: rotate(1deg); }
+  100% { transform: rotate(0); }
+}
 
 @media (min-width: 1920px){
   .sup-aura{
@@ -212,9 +229,9 @@ section{
   .market-col_res{
     gap: 1.5rem !important;
   }
-  .res-img img{
+  /* .res-img img{
     max-width: 80%;
-  }
+  } */
   .card{
     padding: 2rem !important;
   }
@@ -254,9 +271,9 @@ section{
   }
 }
 @media (max-width: 768px){
-  .res-img img{
+  /* .res-img img{
     max-width: 70%;
-  }
+  } */
   .card .title-card {
     font-size: 1.8rem !important;
   }
@@ -325,6 +342,28 @@ section{
   }
 }
 @media (max-width: 640px){
+  #beneBox:hover #bene1,
+  #beneBox:hover #bene2,
+  #beneBox:hover #bene3,
+  #beneBox:hover #bene4,
+  #beneBox:hover #bene5,
+  #beneBox:hover #bene6,
+  #beneBox:focus #bene1,
+  #beneBox:focus #bene2,
+  #beneBox:focus #bene3,
+  #beneBox:focus #bene4,
+  #beneBox:focus #bene5,
+  #beneBox:focus #bene6{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: unset !important;
+}
+  #beneBox:hover #bene2 img,
+  #beneBox:focus #bene2 img{
+    margin-top: 0 !important;
+    max-width: 90% !important;
+  }
   .btn-footer button{
     padding: 1.5rem;
   }
@@ -373,7 +412,7 @@ section{
     margin-bottom: 2rem !important;
   }
   .res-img img{
-    max-width: 60%;
+    height: 6rem !important;
   }
   .img-hid-mb{
     margin-top: 0 !important;

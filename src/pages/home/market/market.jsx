@@ -94,8 +94,8 @@ function Market() {
           <div className="col-left">
             <div className="w-full relative">
               <div className="mb-[6rem]">
-                <h2 className="text-[4.48rem] font-bold leading-[1.3] text-white max-xl:text-[3.75rem]">
-                  LÀM QUEN THỊ TRƯỜNG BẰNG CÁCH TẠO TÀI KHOẢN SÀN GIAO DỊCH
+                <h2 className="text-[4.48rem] text-center font-bold leading-[1.3] text-white max-xl:text-[3.75rem]">
+                  BẮT ĐẦU VỚI TÀI KHOẢN SÀN GIAO DỊCH
                 </h2>
               </div>
               <div className="w-full flex flex-row gap-[2.5rem] justify-center market-col_res">
@@ -167,8 +167,8 @@ function Market() {
 
           {/* Responsive */}
           <div className="market-slide">
-            <h2 className="text-[3.2rem] font-bold leading-[1.3] my-[2rem_1.7rem] text-white">
-              LÀM QUEN THỊ TRƯỜNG BẰNG CÁCH TẠO TÀI KHOẢN SÀN GIAO DỊCH
+            <h2 className="text-[3.2rem] font-bold text-center leading-[1.3] my-[2rem_1.7rem] text-white">
+              BẮT ĐẦU VỚI TÀI KHOẢN SÀN GIAO DỊCH
             </h2>
             <div className="relative w-full p-[0_1.5rem_3rem] mket max-sm:p-[0_0_1.5rem]">
               <img
@@ -179,8 +179,8 @@ function Market() {
                 slidesPerView={3}
                 slidesPerGroup={1}
                 spaceBetween={10}
-                touchRatio={0.8}
-                speed={600}
+                touchRatio={1}
+                speed={300}
                 modules={[Autoplay]}
                 loop={true}
                 loopAdditionalSlides={1}

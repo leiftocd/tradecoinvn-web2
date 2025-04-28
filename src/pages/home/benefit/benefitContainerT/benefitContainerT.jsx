@@ -13,7 +13,7 @@ function BenefitContainerT({ activeBox, onBoxClick }) {
                     spanText="01"
                     srcImg={ImgOne}
                     idBeneImg="bene1"
-                    titleText="Tỉ lệ kèo thắng cao"
+                    titleText="Tỷ lệ thắng cao"
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
                 />
@@ -22,8 +22,7 @@ function BenefitContainerT({ activeBox, onBoxClick }) {
                     idBeneImg="bene2"
                     spanText="02"
                     srcImg={ImgTwo}
-                    titleText={`Đội ngũ Trader #1 Việt Nam
-                        #6 Toàn thế giới`}       
+                    titleText={`Trader top Việt Nam`}       
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
                 />
@@ -32,7 +31,7 @@ function BenefitContainerT({ activeBox, onBoxClick }) {
                     idBeneImg="bene3"
                     spanText="03"
                     srcImg={ImgThree}
-                    titleText="Nhóm tín hiệu Free, không thu phí"
+                    titleText="Tín hiệu miễn phí"
                     activeBox={activeBox}
                     onBoxClick={onBoxClick}
                 />

@@ -104,7 +104,7 @@ function Footer() {
             </div>
             <div className='f-bot flex w-full justify-between flex-col gap-[5rem] max-lg:gap-[4rem] max-md:gap-[3rem] max-sm:gap-[2rem]'>
                 <div className='flex fixed bottom-[5%] right-[3%] sup-aura  max-sm:right-[5%] max-sm:bottom-[4%] max-sm:w-[6rem]! max-sm:h-[6rem]!'>
-                    <button onClick={handleOpen} className= 'w-full h-full cursor-pointer group'>
+                    <button onClick={handleOpen} className= 'w-full h-full cursor-pointer'>
                         <img src={Supp} alt="Support" className=""/>
                     </button>
                 </div>
