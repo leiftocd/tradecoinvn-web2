@@ -16,12 +16,10 @@
         
         if (baseUrl === "%BASE_URL%" || baseUrl === "/" || !baseUrl.includes("://")) {
           baseUrl = window.location.origin;
-          console.log("Using window.location.origin as BASE_URL:", baseUrl);
         }
         
         if (gaMeasurementId === "%GA_MEASUREMENT_ID%") {
           gaMeasurementId = "G-XXXXXXXX"; // Default fallback
-          console.log("Using default GA_MEASUREMENT_ID:", gaMeasurementId);
         }
         
         window.BASE_URL = baseUrl;

@@ -11,12 +11,6 @@ const URL = process.env.VITE_BASE_URL || `http://${HOST_NAME}:${PORT}`;
 const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID || '';
 const GA_API_SECRET = process.env.GA_API_SECRET || '';
 
-console.log('Server environment:', {
-  URL: URL,
-  VITE_BASE_URL: process.env.VITE_BASE_URL,
-  GA_MEASUREMENT_ID: process.env.GA_MEASUREMENT_ID,
-});
-
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dist'), { 
   index: false 
@@ -54,7 +48,6 @@ app.get('/', (req, res) => {
             ],
           }
         );
-        console.log('GA event sent for index page');
       } catch (error) {
         console.error('Error sending GA event:', error.message);
       }
@@ -89,7 +82,6 @@ app.get('/:slug', async (req, res, next) => {
             ],
           }
         );
-        console.log(`GA event sent for ${slug}`);
       } catch (error) {
         console.error('Error sending GA event:', error.message);
       }

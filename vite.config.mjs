@@ -30,14 +30,6 @@ export default defineConfig(({ mode }) => {
 
   const gaMeasurementId = process.env.GA_MEASUREMENT_ID || '';
 
-  console.log('Vite build configuration:', {
-    mode,
-    isVercel,
-    vercelUrl,
-    baseUrl,
-    gaMeasurementId,
-  });
-
   return {
     plugins: [
       react(),
