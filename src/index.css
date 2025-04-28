@@ -395,7 +395,6 @@ section{
 }
   #beneBox:hover #bene2 img,
   #beneBox:focus #bene2 img{
-    margin-top: 0 !important;
     max-width: 90% !important;
   }
   .btn-footer button{
