@@ -9,30 +9,26 @@
     <meta property="og:title" content="Trang Chủ - TRADECOINVN" />
     <meta property="og:description" content="Tham gia TRADECOINVN - Cộng đồng Crypto hàng đầu Việt Nam để nhận nhiều lợi ích và cơ hội đầu tư." />
     
-    <!-- Add this script before any meta tags that use the baseUrl -->
     <script>
       (function() {
         var baseUrl = "%BASE_URL%";
         var gaMeasurementId = "%GA_MEASUREMENT_ID%";
         
-        // If the placeholder wasn't replaced, or it's just a relative path
         if (baseUrl === "%BASE_URL%" || baseUrl === "/" || !baseUrl.includes("://")) {
           baseUrl = window.location.origin;
           console.log("Using window.location.origin as BASE_URL:", baseUrl);
         }
         
         if (gaMeasurementId === "%GA_MEASUREMENT_ID%") {
-          gaMeasurementId = "G-121313155"; // Default fallback
+          gaMeasurementId = "G-XXXXXXXX"; // Default fallback
           console.log("Using default GA_MEASUREMENT_ID:", gaMeasurementId);
         }
         
-        // Save these for use throughout the app
         window.BASE_URL = baseUrl;
         window.GA_MEASUREMENT_ID = gaMeasurementId;
       })();
     </script>
     
-    <!-- Now use window.BASE_URL in your meta tags -->
     <meta property="og:image" id="og-image">
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -46,13 +42,13 @@
     
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Update meta tags with correct URLs
+
         document.getElementById('og-image').setAttribute('content', window.BASE_URL + '/logotitle.png');
         document.getElementById('og-url').setAttribute('content', window.BASE_URL);
         document.getElementById('twitter-image').setAttribute('content', window.BASE_URL + '/logotitle.png');
         document.getElementById('canonical-link').setAttribute('href', window.BASE_URL);
         
-        // Setup Google Analytics
+        // Google Analytics
         const gaId = window.GA_MEASUREMENT_ID;
         if (gaId) {
           const script = document.createElement('script');
