@@ -597,8 +597,8 @@ section{
     right: -1rem !important;
   }
   .slide-item{
-    max-width: 9rem !important;
-    max-height: 9rem !important;
+    max-width: 10em !important;
+    max-height: 10rem !important;
   }
   .slide-res{
     padding: .5rem 1.5rem 2rem;
@@ -630,5 +630,9 @@ section{
 @media (max-width: 375px) {
   .resMImg{
     top: 37%;
+  }
+  .slide-item{
+    max-width: 9rem !important;
+    max-height: 9rem !important;
   }
 }

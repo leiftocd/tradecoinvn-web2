@@ -1,8 +1,8 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Card } from "../../../components/Card/Card";
 import { Slide } from "../../../components/Slide/Slide";
 import "swiper/css/free-mode";
-import { Autoplay, Virtual } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 import "./market.css";
 
 function Market() {
@@ -46,17 +46,8 @@ function Market() {
   ];
 
   const slideRef = useRef(null);
-
-  // Nhân đôi array exchanges để loop được mượt hơn
-  const duplicatedExchanges = [...exchanges, ...exchanges, ...exchanges];
-
-  useEffect(() => {
-    // Preload hình ảnh để tránh giật khi slider chạy
-    exchanges.forEach((exchange) => {
-      const img = new Image();
-      img.src = exchange.img;
-    });
-  }, []);
+  const swiperRef = useRef(null);
+  const touchStartX = useRef(null);
 
   const restartAutoplay = () => {
     if (slideRef.current && slideRef.current.autoplay) {
@@ -70,12 +61,17 @@ function Market() {
     }
   };
 
-  const handleSliderTouchStart = () => {
+  const handleTouchStart = (swiper, event) => {
     stopAutoplay();
+    touchStartX.current = event.touches[0].clientX;
+    swiperRef.current = swiper;
   };
-
-  const handleSliderTouchEnd = () => {
-    setTimeout(restartAutoplay, 300);
+  const handleTouchEnd = () => {
+    if (swiperRef.current) {
+      swiperRef.current.allowTouchMove = true; // reset lại
+    }
+    setTimeout(restartAutoplay, 2000);
+    touchStartX.current = null;
   };
 
   return (
@@ -170,36 +166,21 @@ function Market() {
                 slidesPerView={3}
                 slidesPerGroup={1}
                 spaceBetween={10}
-                speed={600}
-                modules={[Autoplay, Virtual]}
+                touchRatio={0.8}
+                speed={300}
+                modules={[Autoplay]}
                 loop={true}
-                loopAdditionalSlides={6} // Tăng số lượng slides để loop mượt mà hơn
-                virtual={{
-                  enabled: true,
-                  addSlidesAfter: 6, // Thêm slides phía sau
-                  addSlidesBefore: 6  // Thêm slides phía trước
-                }}
-                observer={true} // Theo dõi thay đổi để cập nhật slider
-                observeParents={true}
-                watchSlidesProgress={true} // Theo dõi tiến trình của slides
-                preventInteractionOnTransition={true} // Ngăn chặn tương tác khi đang chuyển đổi
+                loopAdditionalSlides={1}
                 autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false, // Vẫn tự động chạy sau khi người dùng tương tác
-                  pauseOnMouseEnter: true // Tạm dừng khi hover
+                  delay: 2500,
+                  disableOnInteraction: true,
                 }}
                 onSwiper={(swiper) => {
                   slideRef.current = swiper;
                 }}
-                onTouchStart={handleSliderTouchStart}
-                onTouchEnd={handleSliderTouchEnd}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
                 className="slide-content"
-                css={{
-                  // Thêm CSS để giải quyết vấn đề giật trên iOS
-                  "-webkit-backface-visibility": "hidden",
-                  "-webkit-transform": "translate3d(0, 0, 0)",
-                  "-webkit-perspective": "1000"
-                }}
                 breakpoints={{
                   0: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 5 },
                   375: { slidesPerView: 2.5, slidesPerGroup: 1, spaceBetween: 10 },
@@ -209,8 +190,8 @@ function Market() {
                   1024: { slidesPerView: 3, slidesPerGroup: 1, spaceBetween: 30 },
                 }}
               >
-                {duplicatedExchanges.map((exchange, index) => (
-                  <Slide.Item key={`exchange-${index}`} virtualIndex={index}>
+                {exchanges.map((exchange, index) => (
+                  <Slide.Item key={index}>
                     <div className="p-[1rem]">
                       <Card
                         img={exchange.img}

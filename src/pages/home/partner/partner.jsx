@@ -54,6 +54,8 @@ const Partner = () => {
                 modules={[FreeMode, Autoplay, Navigation]} // Added Navigation
                 loop={true}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
+                touchRatio={0.8}
+                speed={400}
                 navigation={{
                   nextEl: ".swiper-button-prev-2", // Fixed: Correct selector
                   prevEl: ".swiper-button-next-2", // Fixed: Correct selector
