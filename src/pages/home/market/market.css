@@ -44,7 +44,6 @@
         width: 100%;
     }
 }
-
 @media (max-width: 480px) {
     #market .swiper-slide > div{
         padding: 1rem .5rem;
