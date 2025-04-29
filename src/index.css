@@ -542,6 +542,9 @@ section{
   }
 }
 @media (max-width: 480px){
+  .res-w-4k{
+    padding: 0 .5rem;
+  }
   #beneBox h2{
     font-size: 14px;
   }
@@ -625,6 +628,9 @@ section{
   .left-img{
     left: -8%;
     max-width: 18%;
+  }
+  #partner{
+    padding: 0 .5rem;
   }
 }
 @media (max-width: 375px) {
